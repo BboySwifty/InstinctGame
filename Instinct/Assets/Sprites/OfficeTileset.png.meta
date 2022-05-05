@@ -1,0 +1,933 @@
+fileFormatVersion: 2
+guid: 73c5332868d6bbd4ea997803030ed925
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3860930126197869948
+    second: OfficeTileset_0
+  - first:
+      213: 2243370844115503240
+    second: OfficeTileset_1
+  - first:
+      213: 7298330048122147769
+    second: OfficeTileset_2
+  - first:
+      213: 6301546872086146332
+    second: OfficeTileset_3
+  - first:
+      213: 8835940893942565556
+    second: OfficeTileset_4
+  - first:
+      213: -2524270506402397729
+    second: OfficeTileset_5
+  - first:
+      213: -623683722120059239
+    second: OfficeTileset_6
+  - first:
+      213: -4015748748198805625
+    second: OfficeTileset_7
+  - first:
+      213: 9114957932564779782
+    second: OfficeTileset_8
+  - first:
+      213: -1164339288823054992
+    second: OfficeTileset_9
+  - first:
+      213: -6357519872212904892
+    second: OfficeTileset_10
+  - first:
+      213: 6799861800174772765
+    second: OfficeTileset_11
+  - first:
+      213: 7063688387209523046
+    second: OfficeTileset_12
+  - first:
+      213: -8653997297813557978
+    second: OfficeTileset_13
+  - first:
+      213: 8660394564003342605
+    second: OfficeTileset_14
+  - first:
+      213: -3821398711223931986
+    second: OfficeTileset_15
+  - first:
+      213: -6634607711404445612
+    second: OfficeTileset_16
+  - first:
+      213: 1273579489304506176
+    second: OfficeTileset_17
+  - first:
+      213: -8266393275814088775
+    second: OfficeTileset_18
+  - first:
+      213: 3953935961650230664
+    second: OfficeTileset_19
+  - first:
+      213: -7927177650103679659
+    second: OfficeTileset_20
+  - first:
+      213: -8110894645002622487
+    second: OfficeTileset_21
+  - first:
+      213: -8126199931963015775
+    second: OfficeTileset_22
+  - first:
+      213: -6475553732270436652
+    second: OfficeTileset_23
+  - first:
+      213: -6929466619256068722
+    second: OfficeTileset_24
+  - first:
+      213: 4943374258487354030
+    second: OfficeTileset_25
+  - first:
+      213: -3232288600184459621
+    second: OfficeTileset_26
+  - first:
+      213: 5747133799905085924
+    second: OfficeTileset_27
+  - first:
+      213: -4447513861386967904
+    second: OfficeTileset_28
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OfficeTileset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -39, y: 39}
+        - {x: -39, y: -50}
+        - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5458035c5aae3649acd21a10b466e79
+      internalID: -3860930126197869948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 600
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: 39}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e86266f7c0200a4ca611b2de6903d92
+      internalID: 2243370844115503240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 600
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -50}
+        - {x: 39, y: 39}
+        - {x: -50, y: 39}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7820e663d3b9d4eb02243ef77bd455
+      internalID: 7298330048122147769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: 39}
+        - {x: -50, y: 50}
+        - {x: -39, y: 50}
+        - {x: -39, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c11f13e9b533a841acdf00cb072b6a1
+      internalID: 6301546872086146332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 600
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: 39}
+        - {x: 39, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb1950433bc3444ba14ed9e7f2a8887
+      internalID: 8835940893942565556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: -39, y: 50}
+        - {x: -39, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb94a02bf4cae5488242cd1ac69061c
+      internalID: -2524270506402397729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_6
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0d0101771da14429a24f576e96039e
+      internalID: -623683722120059239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -50}
+        - {x: 39, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98f539aa98a8524496a7cb80a5cd34f
+      internalID: -4015748748198805625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: -39}
+        - {x: -39, y: -39}
+        - {x: -39, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8850df0bb02c0c42b2f1cd4dac0ac2c
+      internalID: 9114957932564779782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_9
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 500
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -39}
+        - {x: 39, y: -50}
+        - {x: 50, y: -50}
+        - {x: 50, y: -39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c54a73663227254e8f168093e71f600
+      internalID: -1164339288823054992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: -39, y: 50}
+        - {x: -39, y: -39}
+        - {x: 50, y: -39}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd12e8d3a0a796d41b906c57b4d5a77f
+      internalID: -6357519872212904892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: -39}
+        - {x: 50, y: -39}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111df2f251458234cbe8adb11ed27b6b
+      internalID: 6799861800174772765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_12
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 400
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: -39}
+        - {x: 39, y: -39}
+        - {x: 39, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c038cb6767cf4ab419f838100bfce7e9
+      internalID: 7063688387209523046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -19}
+        - {x: -50, y: 50}
+        - {x: -39, y: 50}
+        - {x: -39, y: -19}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56cc34ccfcdd1e4f91b153f50d566dc
+      internalID: -8653997297813557978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_14
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -19}
+        - {x: 39, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -19}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b4856b20988304d836777efd62328d
+      internalID: 8660394564003342605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_15
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: 39}
+        - {x: -50, y: 50}
+        - {x: 19, y: 50}
+        - {x: 19, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586b91d2810ac3f4084e065e32244d20
+      internalID: -3821398711223931986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: 39}
+        - {x: -19, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b58326bc35efc4880a456d45c1a965
+      internalID: -6634607711404445612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 19}
+        - {x: -39, y: 19}
+        - {x: -39, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6bedc20b680cf540994746b54fac8ca
+      internalID: 1273579489304506176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_18
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -50}
+        - {x: 39, y: 19}
+        - {x: 50, y: 19}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a76b9dd6b0dc248846cf5fd0ca64c2
+      internalID: -8266393275814088775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_19
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: -39}
+        - {x: 19, y: -39}
+        - {x: 19, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c83da24a92491e45904bb6231d77e17
+      internalID: 3953935961650230664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_20
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: -50}
+        - {x: -19, y: -39}
+        - {x: 50, y: -39}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781e391be46e5fc4599267352f20ca72
+      internalID: -7927177650103679659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -39, y: 39}
+        - {x: -39, y: -19}
+        - {x: -50, y: -19}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: 39}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1043696ccda27bf40a6ce96b29315fe7
+      internalID: -8110894645002622487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_22
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -19}
+        - {x: 39, y: 39}
+        - {x: -50, y: 39}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -19}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d012e2f828f4641b64849efb16647f
+      internalID: -8126199931963015775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_23
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 19, y: 50}
+        - {x: 19, y: 39}
+        - {x: -39, y: 39}
+        - {x: -39, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b40ecfc18748343899e3afbf10b9a3
+      internalID: -6475553732270436652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_24
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 39, y: -50}
+        - {x: 39, y: 39}
+        - {x: -19, y: 39}
+        - {x: -19, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb108a922671074b8d89d1cbcc73e5a
+      internalID: -6929466619256068722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 19}
+        - {x: -39, y: 19}
+        - {x: -39, y: -39}
+        - {x: 50, y: -39}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697be12c770cdcc4caf9007e359ee746
+      internalID: 4943374258487354030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_26
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: -39}
+        - {x: 39, y: -39}
+        - {x: 39, y: 19}
+        - {x: 50, y: 19}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d604b2282174784fb72cfc9e25f16c1
+      internalID: -3232288600184459621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_27
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: -39, y: 50}
+        - {x: -39, y: -39}
+        - {x: 19, y: -39}
+        - {x: 19, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7496e1098889b3e4a8fb9e2f4b0e8d87
+      internalID: 5747133799905085924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OfficeTileset_28
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -19, y: -50}
+        - {x: -19, y: -39}
+        - {x: 39, y: -39}
+        - {x: 39, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22337ec6ff9da994f96636cb8287cd77
+      internalID: -4447513861386967904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 256e79e2888bc624b93fb44afcaf521b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
