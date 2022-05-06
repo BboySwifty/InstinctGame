@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +9,11 @@ public class UIUpdate : MonoBehaviour
     public Transform gunInventoryUI;
     public Transform waveUI;
     public TextMeshProUGUI messageBox;
+
+    [Header("Examine fields")]
+    public Image itemImage;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
 
     Inventory itemInventory;
     Inventory gunInventory;
@@ -45,6 +48,7 @@ public class UIUpdate : MonoBehaviour
         wm = WaveManager.Instance;
 
         InventoryManager.Instance.ItemsChanged += UpdateInventory;
+        InventoryManager.Instance.ItemsChanged += UpdateExaminePanel;
 
         itemInventory = InventoryManager.Instance.getItemInventory();
         gunInventory = InventoryManager.Instance.getGunInventory();
@@ -102,5 +106,15 @@ public class UIUpdate : MonoBehaviour
                 color.a = 0;
             itemSlots[i].GetComponent<Image>().color = color;
         }
+    }
+
+    private void UpdateExaminePanel(object sender, EventArgs e)
+    {
+        Item activeItem = InventoryManager.Instance.GetActiveItem();
+        if (activeItem == null)
+            return;
+        itemImage.sprite = activeItem.inventoryImage;
+        nameText.text = activeItem.itemName;
+        descriptionText.text = activeItem.description;
     }
 }

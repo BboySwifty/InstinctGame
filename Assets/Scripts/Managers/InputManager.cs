@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     public PauseMenu pm;
     public Animator inventoryAnimator;
     public Animator gunsAnimator;
+    public ExaminePanel examinePanel;
 
     public static InputManager Instance { get; private set; }
 
@@ -89,9 +90,19 @@ public class InputManager : MonoBehaviour
                 player.UseObject();
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+
+        /* Interaction */
+        if (checkKeyDown(KeyCode.E))
         {
             player.PickupItem();
+        }
+        if (checkKeyDown(KeyCode.Space))
+        {
+            examinePanel.Open();
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StartCoroutine(examinePanel.Close());
         }
         /*else if (checkKeyDown(KeyCode.E))
         {

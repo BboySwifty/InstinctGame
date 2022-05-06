@@ -89,7 +89,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (tutorialStage == 5)
         {
-            lights[2].TweenOuterRadius(LightController.Distance.High);
+            lights[2].TweenOuterRadius(LightController.Distance.VeryHigh);
             lights[3].TweenOuterRadius(LightController.Distance.High);
             lights[4].TweenIntensity(LightController.Intensity.Low);
             tutorialStage++;

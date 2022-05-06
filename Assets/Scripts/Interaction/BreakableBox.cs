@@ -26,7 +26,7 @@ public class BreakableBox : Usable
 
         spriteRenderer.sprite = brokenImage;
 
-        foreach (Collider c in GetComponents<Collider>())
+        foreach (Collider2D c in GetComponents<Collider2D>())
         {
             if(c.isTrigger || disableCollider) // Only disable trigger if disableCollider is false
                 c.enabled = false;
