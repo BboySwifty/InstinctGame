@@ -22,4 +22,9 @@ public class ColorToggle : MonoBehaviour
             index = 0;
         colorImage.color = colors[index];
     }
+
+    public Color GetCurrentColor()
+    {
+        return colors[index];
+    }
 }
