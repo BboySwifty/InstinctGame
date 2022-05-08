@@ -5,7 +5,6 @@ using UnityEngine;
 public class RandomHint : MonoBehaviour
 {
 
-    public string folderPath;
     
     [HideInInspector]
     public string value;
