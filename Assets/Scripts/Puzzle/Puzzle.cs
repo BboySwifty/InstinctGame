@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Puzzle : MonoBehaviour
@@ -15,23 +13,23 @@ public abstract class Puzzle : MonoBehaviour
     public Hint[] hints;
 
     [HideInInspector]
-    public string value;
+    public string code;
 
-    protected override void Start()
+    protected virtual void Start()
     {
         GenerateRandomHint();
     }
 
-    protected override void GenerateRandomHint()
+    protected virtual void GenerateRandomHint()
     {
-        value = "";
-        Sprite[] sprites = Resources.LoadAll<Sprite>(folderPath);
+        code = "";
+        Sprite[] sprites = Resources.LoadAll<Sprite>(hintFolderPath);
         foreach (Hint hint in hints)
         {
-            int index = Random.Range(0, sprites.Length);
+            int index = UnityEngine.Random.Range(0, sprites.Length);
             hint.SetSprite(sprites[index]);
             hint.SetExamineImage(sprites[index]);
-            value += sprites[index].name.Substring(sprites[index].name.IndexOf('_') + 1);
+            code += sprites[index].name.Substring(sprites[index].name.IndexOf('_') + 1);
         }
     }
 

@@ -1,27 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hint : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
-    private Image _examineImage;
+    public SpriteRenderer SpriteRenderer;
+    public Image ExamineImage;
 
-    void Start()
+    public void SetSprite(Sprite sprite)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _examineImage = GetComponent<Image>();
+        if(SpriteRenderer != null)
+            SpriteRenderer.sprite = sprite;
     }
 
-    protected void SetSprite(Sprite sprite)
+    public void SetExamineImage(Sprite sprite)
     {
-        if(_spriteRenderer != null)
-            _spriteRenderer.sprite = sprite;
-    }
-
-    protected void SetExamineImage(Sprite sprite)
-    {
-        if (_examineImage != null)
-            _examineImage.sprite = sprite;
+        if (ExamineImage != null)
+            ExamineImage.sprite = sprite;
     }
 }

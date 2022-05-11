@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(RandomHint), true)]
+[CustomEditor(typeof(Puzzle), true)]
 public class NewBehaviourScript : Editor
 {
     public override void OnInspectorGUI()
@@ -12,8 +12,8 @@ public class NewBehaviourScript : Editor
 
         if(GUILayout.Button("Select Folder"))
         {
-            RandomHint rh = (RandomHint) target;
-            rh.folderPath = EditorUtility.OpenFolderPanel("Select a sprite folder", "", "").Substring(Application.dataPath.Length + 11);
+            Puzzle p = (Puzzle) target;
+            p.hintFolderPath = EditorUtility.OpenFolderPanel("Select a sprite folder", "", "").Substring(Application.dataPath.Length + 11);
         }
     }
 }

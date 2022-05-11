@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Puzzle_ColorLock : MonoBehaviour
+public class Puzzle_ColorLock : Puzzle
 {
 
     public ColorToggle[] colorToggles;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override bool IsSolved()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }

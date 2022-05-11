@@ -8,16 +8,6 @@ public class Puzzle_SquareLock : Puzzle
 {
 
     public UIToggle[] toggles;
-    public RandomHint hint;
-
-    [HideInInspector]
-    public string code = "";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        code = hint.value;
-    }
 
     protected override bool IsSolved()
     {
