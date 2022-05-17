@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class PuzzleContainer : Examine
 {
-    public Puzzle puzzle;
+    private Puzzle _puzzle;
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        _puzzle = GetComponent<Puzzle>();
         Subscribe();
     }
 
     private void Subscribe()
     {
-        puzzle.OpenContainer += Open;
+        _puzzle.OpenContainer += Open;
     }
 
     public virtual void Open(object sender, EventArgs e)

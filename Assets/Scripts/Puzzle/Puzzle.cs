@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(PuzzleContainer))]
 public abstract class Puzzle : MonoBehaviour
 {
 
