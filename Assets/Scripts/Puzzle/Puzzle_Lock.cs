@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Puzzle_Lock : Puzzle
 {
-    public CharUpDown[] locks = new CharUpDown[4];
+    public CharUpDown[] locks;
 
     protected override bool IsSolved()
     {
