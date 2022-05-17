@@ -9,6 +9,11 @@ public class Puzzle_ColorLock : Puzzle
 
     protected override bool IsSolved()
     {
-        throw new System.NotImplementedException();
+        string currentCode = "";
+        foreach (ColorToggle ct in colorToggles)
+        {
+            currentCode += ct.GetCodeValue();
+        }
+        return currentCode == code;
     }
 }

@@ -5,14 +5,34 @@ using UnityEngine.UI;
 
 public class ColorToggle : MonoBehaviour
 {
-    public Color[] colors;
+    public Colors[] colors;
     public Image colorImage;
 
+    public enum Colors
+    {
+        Red,
+        Yellow,
+        Green,
+        Blue,
+        Purple
+    }
+
+    private Dictionary<Colors, string[]> colorsHex = new Dictionary<Colors, string[]>()
+    {
+        { Colors.Red, new[] { "R", "#D81D1D" } },
+        { Colors.Yellow, new[] { "Y", "#C2B31D" } },
+        { Colors.Green, new[] { "G", "#32AB08" } },
+        { Colors.Blue, new[] { "B", "#2A70FF" } },
+        { Colors.Purple, new[] { "P", "#DA00A5" } },
+
+    };
+    private string value;
     private int index = 0;
 
     void Start()
     {
-        colorImage.color = colors[index];
+        SetImageColor(colors[index]);
+        SetCodeValue(colors[index]);
     }
 
     public void NextColor()
@@ -20,11 +40,26 @@ public class ColorToggle : MonoBehaviour
         index++;
         if (index == colors.Length)
             index = 0;
-        colorImage.color = colors[index];
+        SetImageColor(colors[index]);
+        SetCodeValue(colors[index]);
     }
 
-    public Color GetCurrentColor()
+    private void SetCodeValue(Colors color)
     {
-        return colors[index];
+        value = colorsHex[color][0];
+    }
+
+    private void SetImageColor(Colors color)
+    {
+        Color parsedColor;
+        if(ColorUtility.TryParseHtmlString(colorsHex[color][1], out parsedColor))
+        {
+            colorImage.color = parsedColor;
+        }
+    }
+
+    public string GetCodeValue()
+    {
+        return value;
     }
 }

@@ -89,12 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc02bd23575ef28439fa2acbee19bb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.9153788, b: 0.0990566, a: 1}
-  - {r: 0.25451612, g: 1, b: 0, a: 1}
-  - {r: 0.16509432, g: 0.43818462, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.7951088, a: 1}
+  colors: 0000000001000000020000000300000004000000
   colorImage: {fileID: 7870897241739244780}
 --- !u!114 &4068744144728922504
 MonoBehaviour:
