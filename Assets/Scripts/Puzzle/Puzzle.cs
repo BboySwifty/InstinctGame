@@ -38,4 +38,10 @@ public abstract class Puzzle : MonoBehaviour
     {
         OpenContainer?.Invoke(this, EventArgs.Empty);
     }
+
+    public void Unlock()
+    {
+        if (IsSolved())
+            InvokeOpenContainer();
+    }
 }

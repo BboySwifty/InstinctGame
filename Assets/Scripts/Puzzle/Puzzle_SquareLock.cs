@@ -18,10 +18,4 @@ public class Puzzle_SquareLock : Puzzle
         }
         return true;
     }
-
-    public void Unlock()
-    {
-        if (IsSolved())
-            InvokeOpenContainer();
-    }
 }

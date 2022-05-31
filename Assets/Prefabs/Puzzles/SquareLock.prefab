@@ -148,7 +148,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &1847821459573718082
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +296,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &1990130285442947173
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +439,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1008897401641934182}
-  - component: {fileID: 83565103}
   m_Layer: 11
   m_Name: SquareLock
   m_TagString: Untagged
@@ -471,18 +468,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &83565103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2303420880498119515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcb1a95d7e5baaf41bbd903b71bc1522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2782078775372775855
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +616,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &3105348321673676963
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,7 +764,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &3613623241302537093
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +912,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &3918247222762732887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1060,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &4496622069639027724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1208,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &4576816299964784909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1356,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &4666797999803650907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1504,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &4669511547962487027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1728,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &5240285274915711125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +1876,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &6171285830039185430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2232,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &7397537494277439980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,7 +2380,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &7756891747246263651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,7 +2528,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &7876367248337541330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2676,6 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0
 --- !u!1 &8074420632676917100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,4 +2824,3 @@ MonoBehaviour:
   OnColor: {r: 1, g: 1, b: 1, a: 1}
   OffColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   FadeDuration: 0.2
-  IsOn: 0

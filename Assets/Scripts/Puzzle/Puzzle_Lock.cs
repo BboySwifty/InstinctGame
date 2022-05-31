@@ -17,10 +17,4 @@ public class Puzzle_Lock : Puzzle
         }
         return currentCode == code;
     }
-
-    public void Unlock()
-    {
-        if(IsSolved())
-            InvokeOpenContainer();
-    }
 }

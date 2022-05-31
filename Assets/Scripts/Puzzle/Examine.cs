@@ -17,7 +17,7 @@ public class Examine : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        panel = transform.Find("Canvas").gameObject;
+        panel = GetComponentInChildren<Canvas>().gameObject;
         _panelRT = panel.GetComponent<RectTransform>();
 
         StartCoroutine(ClosePuzzle());
