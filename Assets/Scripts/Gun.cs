@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,13 +16,14 @@ public class Gun : Item
     public GunType gunType;
     public Transform firePoint;
     public AudioSource shotSound;
-    public GameObject bulletPrefab;
     public Animator animator;
+    public LineRenderer line;
 
     private float cooldownTime = 0f;
     private int currentAmmoInClip;
     private int currentExtraAmmo;
     private bool isReloading;
+    private const float BULLET_LINE_LIFETIME = 0.02f; // Recommended 0.02f
 
     private void Awake()
     {
@@ -45,27 +48,34 @@ public class Gun : Item
 
     public override void Use()
     {
-        Shoot();
+        if (currentAmmoInClip > 0)
+            Shoot();
+        else if (!isReloading)
+            StartCoroutine(Reload());
     }
 
     private void Shoot()
     {
-        if (currentAmmoInClip != 0)
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.up, 10f);
+        
+        if (hit)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Bullet>().SetPlayerStats(player);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firePoint.up * bulletVelocity, ForceMode2D.Impulse);
-            cooldownTime = 0f;
-            if (ammoPerClip != -1)
-                currentAmmoInClip--;
+            Zombie zombie = hit.transform.GetComponent<Zombie>();
+            if (zombie != null)
+            {
+                zombie.Damage(firePower);
+            }
+            StartCoroutine(ShowBulletLine(firePoint.position, hit.point, BULLET_LINE_LIFETIME));
         }
         else
         {
-            // Play empty gun sound
-            if (!IsReloading())
-                StartCoroutine(Reload());
+            StartCoroutine(ShowBulletLine(firePoint.position, firePoint.position + firePoint.up * 10, BULLET_LINE_LIFETIME));
         }
+
+        cooldownTime = 0f;
+
+        if (ammoPerClip != -1)
+            currentAmmoInClip--;
     }
 
     public IEnumerator Reload()
@@ -96,6 +106,15 @@ public class Gun : Item
         }
     }
 
+    private IEnumerator ShowBulletLine(Vector2 from, Vector2 to, float time)
+    {
+        line.SetPosition(0, from);
+        line.SetPosition(1, to);
+        line.enabled = true;
+        yield return new WaitForSeconds(time);
+        line.enabled = false;
+    }
+
     public bool CanShoot()
     {
         return cooldownTime >= fireRate;
@@ -118,38 +137,37 @@ public class Gun : Item
 
     public void Trigger()
     {
-        if (CanShoot())
+        if (!CanShoot())
+            return;
+
+        switch (gunType)
         {
-            switch (gunType)
-            {
-                case GunType.Automatic:
-                    Shoot();
-                    break;
-                case GunType.SemiAuto:
-                    break;
-                case GunType.Burst:
-                    Shoot();
-                    break;
-            }
+            case GunType.Automatic:
+                Use();
+                break;
+            case GunType.SemiAuto:
+                break;
+            case GunType.Burst:
+                Use();
+                break;
         }
     }
 
     public void TriggerDown()
     {
-        if (CanShoot())
-        {
-            switch (gunType)
-            {
-                case GunType.Automatic:
-                    Shoot();
-                    break;
-                case GunType.SemiAuto:
-                    Shoot();
-                    break;
-                case GunType.Burst:
+        if (!CanShoot())
+            return;
 
-                    break;
-            }
+        switch (gunType)
+        {
+            case GunType.Automatic:
+                Use();
+                break;
+            case GunType.SemiAuto:
+                Use();
+                break;
+            case GunType.Burst:
+                break;
         }
     }
 

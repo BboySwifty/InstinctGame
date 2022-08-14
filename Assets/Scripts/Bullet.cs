@@ -31,7 +31,6 @@ public class Bullet : MonoBehaviour
                 {
                     character.Die();
                     playerStats.AddScore(50f);
-                    WaveManager.Instance.ZombieKilled();
                 }
                 playerStats.AddScore(scorePerHit);
             }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public int RoomId;
     public List<Room> AdjacentRooms;
-    public List<Transform> SpawnPoints;
+    public List<Spawner> SpawnPoints;
     public bool Active = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +18,7 @@ public class Room : MonoBehaviour
 
     public void RefreshSpawns()
     {
-        List<Transform> allSpawns = new List<Transform>();
+        List<Spawner> allSpawns = new List<Spawner>();
         allSpawns.AddRange(SpawnPoints);
         foreach (Room room in AdjacentRooms)
         {

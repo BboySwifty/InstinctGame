@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     public float cooldownTimer = 0f;
     public GameObject ZombiesContainer;
     public GameObject Zombie;
-    public List<Transform> SpawnPoints;
+    public List<Spawner> SpawnPoints;
     public bool endless = false;
     public bool debug = false;
     public bool waveOnCooldown = true;
@@ -22,7 +22,6 @@ public class WaveManager : MonoBehaviour
     private Player player;
     private float spawnTimer = 0f;
     private int zombiesToSpawn = 5;
-    private int numberOfZombiesAlive = 0;
 
     #region Singleton
     private void CreateInstance()
@@ -51,45 +50,45 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.GameIsPaused)
+        if (PauseMenu.GameIsPaused)
+            return;
+
+        if (GameManager.Instance.currentState == GameState.Tutorial)
+            return;
+
+        if (waveOnCooldown)
         {
-            if (waveOnCooldown){
-                cooldownTimer += Time.deltaTime;
-                if (cooldownTimer >= WaveRate)
-                {
-                    NextWave();
-                }
-            }
-            else if (zombiesToSpawn > 0 && SpawnPoints.Count > 0)
+            cooldownTimer += Time.deltaTime;
+            if (cooldownTimer >= WaveRate)
             {
-                spawnTimer += Time.deltaTime;
-                if (spawnTimer >= SpawnRate && numberOfZombiesAlive < 20)
-                {
-                    int spawnPointIndex = GetRandomIndex();
-                    SpawnZombie(SpawnPoints[spawnPointIndex]);
-                    spawnTimer = 0f;
-                }
+                NextWave();
             }
-            else if (numberOfZombiesAlive <= 0)
+        }
+        else if (zombiesToSpawn > 0 && SpawnPoints.Count > 0)
+        {
+            spawnTimer += Time.deltaTime;
+            if (spawnTimer >= SpawnRate && ZombiesContainer.transform.childCount < 20)
             {
-                waveOnCooldown = true;
-                numberOfZombiesAlive = 0;
+                int spawnPointIndex = GetRandomIndex();
+                SpawnZombie(SpawnPoints[spawnPointIndex]);
+                spawnTimer = 0f;
             }
+        }
+        else if (ZombiesContainer.transform.childCount == 0)
+        {
+            waveOnCooldown = true;
         }
     }
 
-    private void SpawnZombie(Transform spawnPoint)
+    private void SpawnZombie(Spawner spawnPoint)
     {
-        GameObject zombie = Instantiate(Zombie, spawnPoint);
-        zombie.GetComponent<AIDestinationSetter>().target = player.transform;
+        GameObject zombie = spawnPoint.SpawnZombie();
         zombie.transform.SetParent(ZombiesContainer.transform);
         zombiesToSpawn--;
-        numberOfZombiesAlive++;
-        
+
         if (debug)
         {
             Destroy(zombie, 1f);
-            numberOfZombiesAlive--;
         }
     }
 
@@ -98,7 +97,7 @@ public class WaveManager : MonoBehaviour
         return UnityEngine.Random.Range(0, SpawnPoints.Count);
     }
 
-    private void NextWave()
+    public void NextWave()
     {
         cooldownTimer = 0f;
         waveOnCooldown = false;
@@ -109,13 +108,8 @@ public class WaveManager : MonoBehaviour
         spawnTimer = -2f;
     }
 
-    public void ChangeSpawnPoints(List<Transform> sp)
+    public void ChangeSpawnPoints(List<Spawner> sp)
     {
         SpawnPoints = sp;
-    }
-
-    public void ZombieKilled()
-    {
-        numberOfZombiesAlive--;
     }
 }

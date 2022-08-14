@@ -7,7 +7,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class LightController : MonoBehaviour
 {
     public enum Distance { Off, Low, Medium, High, VeryHigh }
-    public enum Intensity { Off, Low }
+    public enum Intensity { Off, Low, High }
 
     [SerializeField]
     private float tweenDuration = 1.0f;
@@ -15,9 +15,10 @@ public class LightController : MonoBehaviour
     private const float LOW_RADIUS_VALUE = 1f;
     private const float MEDIUM_RADIUS_VALUE = 2.5f;
     private const float HIGH_RADIUS_VALUE = 3.5f;
-    private const float VERY_HIGH_RADIUS_VALUE = 3.5f;
+    private const float VERY_HIGH_RADIUS_VALUE = 5f;
 
     private const float LOW_INTENSITY_VALUE = 0.6f;
+    private const float HIGH_INTENSITY_VALUE = 1f;
 
     private float fromValue = 0f;
     private float toValue = 1f;

@@ -41,6 +41,9 @@ public class Actor : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
+
+        if (IsDying())
+            Die();
     }
 
     public void Knockback(Vector3 impulse)

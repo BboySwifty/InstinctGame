@@ -1,30 +1,35 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Playables;
 
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
-    public LightController[] lights;
+    //public LightController[] lights;
     public TutorialChest chest;
+    public List<TutorialTimelineTrigger> triggers;
+    public PlayableDirector timeline1;
+    public Spawner spawner;
+    public GameObject zombieDoor;
 
     private Player player;
     private int tutorialStage = 0;
     private Inventory _inventory;
+    private Inventory _gunInventory;
 
     private void Start()
     {
         _inventory = InventoryManager.Instance.getItemInventory();
+        _gunInventory = InventoryManager.Instance.getGunInventory();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        lights[0].SetOuterRadius(LightController.Distance.Off);
-        lights[1].SetOuterRadius(LightController.Distance.Off);
-        lights[2].SetOuterRadius(LightController.Distance.Off);
-        lights[3].SetOuterRadius(LightController.Distance.Off);
-        lights[4].SetIntensity(LightController.Intensity.Off);
-
+        //foreach (LightController light in lights)
+        //    light.SetIntensity(LightController.Intensity.Off);
         chest.CollisionExit += ChestExited;
+        foreach(TutorialTimelineTrigger t in triggers)
+        {
+            t.TriggerEntered += TutorialTriggerEntered;
+        }
     }
 
     // Update is called once per frame
@@ -46,14 +51,15 @@ public class TutorialManager : MonoBehaviour
                     Input.GetKeyDown(KeyCode.S) ||
                     Input.GetKeyDown(KeyCode.D))
                 {
-                    lights[0].TweenOuterRadius(LightController.Distance.Low);
+                //    lights[0].TweenIntensity(LightController.Intensity.High);
+                //    lights[0].TweenOuterRadius(LightController.Distance.Low);
                     tutorialStage++;
                 }
                 break;
             case 1:
                 if (player.GetNearbyObject() is BreakableBox && Input.GetMouseButtonDown(0))
                 {
-                    lights[0].TweenOuterRadius(LightController.Distance.High);
+                //    lights[0].TweenOuterRadius(LightController.Distance.High);
                     tutorialStage++;
                 }
                 break;
@@ -70,7 +76,8 @@ public class TutorialManager : MonoBehaviour
             case 4:
                 if (_inventory.GetItemCount() == 2)
                 {
-                    lights[1].TweenOuterRadius(LightController.Distance.High);
+                //    lights[0].SetIntensity(LightController.Intensity.High);
+                //    lights[1].TweenIntensity(LightController.Intensity.High);
                     tutorialStage++;
                 }
                 break;
@@ -89,10 +96,39 @@ public class TutorialManager : MonoBehaviour
     {
         if (tutorialStage == 5)
         {
-            lights[2].TweenOuterRadius(LightController.Distance.VeryHigh);
-            lights[3].TweenOuterRadius(LightController.Distance.High);
-            lights[4].TweenIntensity(LightController.Intensity.Low);
+            //foreach (LightController light in lights)
+            //    light.TweenIntensity(LightController.Intensity.High);
             tutorialStage++;
+        }
+    }
+
+    private void TutorialTriggerEntered(object state, EventArgs e)
+    {
+        TutorialTimelineTrigger ttt = state as TutorialTimelineTrigger;
+        Console.WriteLine("Hi bitch - " + ttt.id);
+        switch (tutorialStage)
+        {
+            case 7:
+                timeline1.Play();
+                spawner.SpawnZombie();
+                tutorialStage++;
+                break;
+            case 8:
+                if(_gunInventory.GetItemCount() > 0)
+                {
+                    timeline1.Stop();
+                    timeline1.Play();
+                    Destroy(zombieDoor, 1f);
+                    tutorialStage++;
+                }
+                break;
+            case 9:
+                if(ttt.id == 2)
+                {
+                    GameManager.Instance.SetGameState(GameState.Waves);
+                    tutorialStage++;
+                }
+                break;
         }
     }
 }

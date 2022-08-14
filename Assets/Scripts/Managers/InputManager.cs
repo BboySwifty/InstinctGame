@@ -75,7 +75,7 @@ public class InputManager : MonoBehaviour
             if(player.state == 1)
             {
                 Gun gun = (Gun) InventoryManager.Instance.GetActiveItem();
-                gun.TriggerDown();
+                gun.Trigger();
             }
         }
         if (Input.GetMouseButtonDown(0))
@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour
             if(player.state == 1)
             {
                 Gun gun = (Gun)InventoryManager.Instance.GetActiveItem();
-                gun.Trigger();
+                gun.TriggerDown();
             }
             else
             {
