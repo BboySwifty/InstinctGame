@@ -8,16 +8,15 @@ public class Gun : Item
 {
     public float fireRate = 0.5f;
     public float firePower;
-    public float bulletVelocity = 20f;
-    public float bulletLifetime = 1f;
     public float reloadTime = 1f;
     public int maxAmmo = -1;
     public int ammoPerClip = -1;
     public GunType gunType;
     public Transform firePoint;
-    public AudioSource shotSound;
     public Animator animator;
     public LineRenderer line;
+    public AudioSource shotSound;
+    public AudioSource reloadSound;
 
     private float cooldownTime = 0f;
     private int currentAmmoInClip;
@@ -48,14 +47,18 @@ public class Gun : Item
 
     public override void Use()
     {
+        if (isReloading)
+            return;
+
         if (currentAmmoInClip > 0)
             Shoot();
-        else if (!isReloading)
+        else
             StartCoroutine(Reload());
     }
 
     private void Shoot()
     {
+        shotSound.Play();
         RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.up, 10f);
         
         if (hit)
@@ -82,6 +85,7 @@ public class Gun : Item
     {
         if (currentAmmoInClip < ammoPerClip && ammoPerClip != -1 && currentExtraAmmo != 0)
         {
+            reloadSound.Play();
             isReloading = true;
             //animator.SetBool("Reloading", true);
             yield return new WaitForSeconds(reloadTime - .25f);
@@ -96,9 +100,9 @@ public class Gun : Item
             }
 
             currentAmmoInClip += ammoToReload;
-            isReloading = false;
             //animator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
+            isReloading = false;
         }
         else
         {

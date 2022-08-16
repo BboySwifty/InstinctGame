@@ -90,6 +90,14 @@ public class InputManager : MonoBehaviour
                 player.UseObject();
             }
         }
+        if (checkKeyDown(KeyCode.R))
+        {
+            if (player.state == 1)
+            {
+                Gun gun = (Gun)InventoryManager.Instance.GetActiveItem();
+                StartCoroutine(gun.Reload());
+            }
+        }
 
         /* Interaction */
         if (checkKeyDown(KeyCode.E))
