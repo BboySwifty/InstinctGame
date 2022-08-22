@@ -174,11 +174,4 @@ public class Gun : Item
                 break;
         }
     }
-
-    public enum GunType
-    {
-        Automatic,
-        SemiAuto,
-        Burst
-    }
 }
