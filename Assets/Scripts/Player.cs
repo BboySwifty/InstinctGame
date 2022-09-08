@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +15,36 @@ public class Player : Actor
     public int state = 0; // States : 0 = Nothing, 1 = Gun, 2 = Item
     public bool isWalking = false;
 
-    private Interactable nearbyObject = null;
+    public event EventHandler<HealthChangedEventArgs> HealthChanged;
+
+    private List<Interactable> nearbyObjects;
     private Animator legsAnimator;
 
-    private void Start()
+    #region Singleton
+    public static Player Instance { get; private set; }
+
+    public void CreateInstance()
     {
-        currentHealth = Health;
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    public void Awake()
+    {
+        CreateInstance();
+        nearbyObjects = new List<Interactable>();
+    }
+
+    public override void Start()
+    {
+        base.Start();
         legsAnimator = legs.GetComponent<Animator>();
     }
 
@@ -35,6 +59,12 @@ public class Player : Actor
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
+    public override void Damage(float damage)
+    {
+        base.Damage(damage);
+        HealthChanged?.Invoke(this, new HealthChangedEventArgs(currentHealth));
+    }
+
     public override void Move(Vector2 movement)
     {
         if (!knockedBack && movement != Vector2.zero)
@@ -45,11 +75,6 @@ public class Player : Actor
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
             legs.transform.rotation = Quaternion.Slerp(legs.transform.rotation, Quaternion.Euler(0, 0, angle + 180), turnSpeed * Time.deltaTime);
         }
-    }
-
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
     }
 
     public void AddScore(float score)
@@ -64,48 +89,40 @@ public class Player : Actor
 
     public Interactable GetNearbyObject()
     {
-        return nearbyObject;
+        return nearbyObjects.Count > 0 ? nearbyObjects[0] : null;
     }
 
-    public void SetNearbyObject(Interactable nearbyObject)
+    public void AddNearbyObject(Interactable nearbyObject)
     {
-        this.nearbyObject = nearbyObject;
-        interactionUI.SetActive(nearbyObject != null);
+        nearbyObjects.Add(nearbyObject);
+        interactionUI.SetActive(true);
     }
 
-    public void UseObject()
+    public void RemoveNearbyObject(Interactable nearbyObject)
     {
-        Item activeItem = InventoryManager.Instance.GetActiveItem();
-        if (activeItem == null)
-            InteractNearbyObject();
-        else if (activeItem.GetType() == typeof(Flashlight))
-            InventoryManager.Instance.UseActiveItem();
-        else
-            InteractNearbyObject();
-    }
-
-    public void InteractNearbyObject()
-    {
-        if (nearbyObject == null || !(nearbyObject is Usable))
-            return;
-
-        Usable usableObject = (Usable)nearbyObject;
-        if (usableObject.IsInteractable())
-        {
-            usableObject.Interact();
-            InventoryManager.Instance.UseActiveItem();
-        }
+        nearbyObjects.Remove(nearbyObject);
+        interactionUI.SetActive(nearbyObjects.Count > 0);
     }
 
     public void PickupItem()
     {
-        if (nearbyObject == null || !(nearbyObject is Item))
+        if (nearbyObjects.Count == 0 || !(nearbyObjects[0] is Item))
             return;
-        nearbyObject.Interact();
+        nearbyObjects[0].Interact();
     }
 
     public void SetWalkAnimation(bool value)
     {
         legsAnimator.SetBool("Walking", value);
+    }
+}
+
+public class HealthChangedEventArgs
+{
+    public float CurrentHealth { get; }
+
+    public HealthChangedEventArgs(float currentHealth)
+    {
+        CurrentHealth = currentHealth;
     }
 }

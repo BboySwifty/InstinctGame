@@ -16,12 +16,10 @@ public class TutorialManager : MonoBehaviour
     private Player player;
     private int tutorialStage = 0;
     private Inventory _inventory;
-    private Inventory _gunInventory;
 
     private void Start()
     {
-        _inventory = InventoryManager.Instance.getItemInventory();
-        _gunInventory = InventoryManager.Instance.getGunInventory();
+        _inventory = InventoryManager.Instance.GetInventory();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         //foreach (LightController light in lights)
         //    light.SetIntensity(LightController.Intensity.Off);
@@ -70,7 +68,7 @@ public class TutorialManager : MonoBehaviour
             case 3:
                 if (player.GetNearbyObject() is BreakableBox box &&
                     Input.GetMouseButtonDown(0) &&
-                    _inventory.GetActiveItem().id == box.requiredItemID)
+                    InventoryManager.Instance.GetActiveItem().itemData == box.GetRequiredItem())
                     tutorialStage++;
                 break;
             case 4:
@@ -84,7 +82,7 @@ public class TutorialManager : MonoBehaviour
             case 6:
                 if (player.GetNearbyObject() is Door door &&
                     Input.GetMouseButtonDown(0) &&
-                    _inventory.GetActiveItem().id == door.requiredItemID)
+                    InventoryManager.Instance.GetActiveItem().itemData == door.GetRequiredItem())
                 {
                     tutorialStage++;
                 }
@@ -114,7 +112,7 @@ public class TutorialManager : MonoBehaviour
                 tutorialStage++;
                 break;
             case 8:
-                if(_gunInventory.GetItemCount() > 0)
+                if(_inventory.GetGunCount() > 0)
                 {
                     timeline1.Stop();
                     timeline1.Play();

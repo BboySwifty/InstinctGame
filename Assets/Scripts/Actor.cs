@@ -17,7 +17,7 @@ public class Actor : MonoBehaviour
     protected float currentHealth;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         currentHealth = Health;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -38,7 +38,7 @@ public class Actor : MonoBehaviour
         }
     }
 
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         currentHealth -= damage;
 
@@ -67,7 +67,7 @@ public class Actor : MonoBehaviour
         return currentHealth <= 0;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         rb.isKinematic = true;
         if (deathSound != null && !deathSound.isPlaying && deathSound.enabled)

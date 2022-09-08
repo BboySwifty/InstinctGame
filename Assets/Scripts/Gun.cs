@@ -6,18 +6,15 @@ using UnityEngine;
 
 public class Gun : Item
 {
-    public float fireRate = 0.5f;
-    public float firePower;
-    public float reloadTime = 1f;
-    public int maxAmmo = -1;
-    public int ammoPerClip = -1;
-    public GunType gunType;
     public Transform firePoint;
     public Animator animator;
     public LineRenderer line;
     public AudioSource shotSound;
     public AudioSource reloadSound;
 
+    public event EventHandler<AmmoChangedEventArgs> AmmoChanged;
+
+    private GunData _gunData;
     private float cooldownTime = 0f;
     private int currentAmmoInClip;
     private int currentExtraAmmo;
@@ -26,15 +23,24 @@ public class Gun : Item
 
     private void Awake()
     {
-        inventoryIndex = 0;
-        currentAmmoInClip = ammoPerClip;
-        currentExtraAmmo = maxAmmo == -1 ? maxAmmo : maxAmmo - ammoPerClip;
+        _gunData = itemData as GunData;
+    }
+
+    public void Start()
+    {
+        currentAmmoInClip = _gunData.ammoPerClip;
+        currentExtraAmmo = _gunData.maxAmmo == -1 ? _gunData.maxAmmo : _gunData.maxAmmo - _gunData.ammoPerClip;
     }
 
     void OnEnable()
     {
         isReloading = false;
         //animator.SetBool("Reloading", false);
+    }
+
+    private void OnDisable()
+    {
+        AmmoChanged = null;
     }
 
     void Update()
@@ -46,6 +52,46 @@ public class Gun : Item
     }
 
     public override void Use()
+    {
+        if (!CanShoot())
+            return;
+
+        switch (_gunData.gunType)
+        {
+            case GunType.Automatic:
+                ShootOrReload();
+                break;
+            case GunType.SemiAuto:
+                break;
+            case GunType.Burst:
+                break;
+        }
+    }
+
+    public override void UseDown()
+    {
+        if (!CanShoot())
+            return;
+
+        switch (_gunData.gunType)
+        {
+            case GunType.Automatic:
+                ShootOrReload();
+                break;
+            case GunType.SemiAuto:
+                ShootOrReload();
+                break;
+            case GunType.Burst:
+                break;
+        }
+    }
+
+    public bool CanShoot()
+    {
+        return cooldownTime >= _gunData.fireRate;
+    }
+
+    private void ShootOrReload()
     {
         if (isReloading)
             return;
@@ -66,7 +112,7 @@ public class Gun : Item
             Zombie zombie = hit.transform.GetComponent<Zombie>();
             if (zombie != null)
             {
-                zombie.Damage(firePower);
+                zombie.Damage(_gunData.firePower);
             }
             StartCoroutine(ShowBulletLine(firePoint.position, hit.point, BULLET_LINE_LIFETIME));
         }
@@ -77,22 +123,24 @@ public class Gun : Item
 
         cooldownTime = 0f;
 
-        if (ammoPerClip != -1)
+        if (_gunData.ammoPerClip != -1)
             currentAmmoInClip--;
+
+        InvokeAmmoChanged();
     }
 
     public IEnumerator Reload()
     {
-        if (currentAmmoInClip < ammoPerClip && ammoPerClip != -1 && currentExtraAmmo != 0)
+        if (currentAmmoInClip < _gunData.ammoPerClip && _gunData.ammoPerClip != -1 && currentExtraAmmo != 0)
         {
             reloadSound.Play();
             isReloading = true;
             //animator.SetBool("Reloading", true);
-            yield return new WaitForSeconds(reloadTime - .25f);
+            yield return new WaitForSeconds(_gunData.reloadTime - .25f);
 
-            int ammoToReload = ammoPerClip - currentAmmoInClip;
+            int ammoToReload = _gunData.ammoPerClip - currentAmmoInClip;
 
-            if (maxAmmo != -1)
+            if (_gunData.maxAmmo != -1)
             {
                 if (ammoToReload > currentExtraAmmo)
                     ammoToReload = currentExtraAmmo;
@@ -108,6 +156,8 @@ public class Gun : Item
         {
             // Play can't reload sound
         }
+
+        InvokeAmmoChanged();
     }
 
     private IEnumerator ShowBulletLine(Vector2 from, Vector2 to, float time)
@@ -119,14 +169,9 @@ public class Gun : Item
         line.enabled = false;
     }
 
-    public bool CanShoot()
+    private void InvokeAmmoChanged()
     {
-        return cooldownTime >= fireRate;
-    }
-
-    public bool IsReloading()
-    {
-        return isReloading;
+        AmmoChanged?.Invoke(this, new AmmoChangedEventArgs(currentAmmoInClip, currentExtraAmmo));
     }
 
     public int CurrentClipAmmo()
@@ -138,40 +183,16 @@ public class Gun : Item
     {
         return currentExtraAmmo;
     }
+}
 
-    public void Trigger()
+public class AmmoChangedEventArgs : EventArgs
+{
+    public int CurrentAmmo { get; }
+    public int ExtraAmmo { get; }
+
+    public AmmoChangedEventArgs(int currentAmmo, int extraAmmo)
     {
-        if (!CanShoot())
-            return;
-
-        switch (gunType)
-        {
-            case GunType.Automatic:
-                Use();
-                break;
-            case GunType.SemiAuto:
-                break;
-            case GunType.Burst:
-                Use();
-                break;
-        }
-    }
-
-    public void TriggerDown()
-    {
-        if (!CanShoot())
-            return;
-
-        switch (gunType)
-        {
-            case GunType.Automatic:
-                Use();
-                break;
-            case GunType.SemiAuto:
-                Use();
-                break;
-            case GunType.Burst:
-                break;
-        }
+        CurrentAmmo = currentAmmo;
+        ExtraAmmo = extraAmmo;
     }
 }

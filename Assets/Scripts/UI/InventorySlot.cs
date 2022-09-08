@@ -17,8 +17,8 @@ public class InventorySlot : MonoBehaviour
         item = newItem;
         if (item != null)
         {
-            itemNameLabel.text = item.itemName;
-            icon.sprite = item.inventoryImage;
+            itemNameLabel.text = item.itemData.itemName;
+            icon.sprite = item.itemData.inventoryImage;
             icon.enabled = true;
         }
         else

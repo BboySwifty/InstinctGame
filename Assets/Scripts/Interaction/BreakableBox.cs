@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BreakableBox : Usable
 {
-
     public Sprite brokenImage;
     public GameObject dropPrefab;
     public SpriteRenderer spriteRenderer;

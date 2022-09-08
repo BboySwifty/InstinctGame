@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
 
     public static InputManager Instance { get; private set; }
 
+    private InventoryManager invManager;
     private Player player;
 
     #region Singleton
@@ -36,6 +37,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        invManager = InventoryManager.Instance;
     }
 
     // Update is called once per frame
@@ -44,65 +46,54 @@ public class InputManager : MonoBehaviour
         /* Item selection */
         if (checkKeyDown(KeyCode.Alpha1))
         {
-            InventoryManager.Instance.SelectItem(1, 0);
+            invManager.SelectItem(InventoryType.Item, 0);
         }
         else if (checkKeyDown(KeyCode.Alpha2))
         {
-            InventoryManager.Instance.SelectItem(1, 1);
+            invManager.SelectItem(InventoryType.Item, 1);
         }
         else if (checkKeyDown(KeyCode.Alpha3))
         {
-            InventoryManager.Instance.SelectItem(1, 2);
+            invManager.SelectItem(InventoryType.Item, 2);
         }
         else if (checkKeyDown(KeyCode.Alpha4))
         {
-            InventoryManager.Instance.SelectItem(1, 3);
+            invManager.SelectItem(InventoryType.Item, 3);
         }
         else if (checkKeyDown(KeyCode.Alpha5))
         {
-            InventoryManager.Instance.SelectItem(1, 4);
+            invManager.SelectItem(InventoryType.Item, 4);
         }
         else if (checkKeyDown(KeyCode.Alpha6))
         {
-            InventoryManager.Instance.SelectItem(1, 5);
+            invManager.SelectItem(InventoryType.Item, 5);
         }
         else if (checkKeyDown(KeyCode.Q))
         {
-            InventoryManager.Instance.SelectItem(0, 0);
-        }
-        if (Input.GetMouseButton(0))
-        {
-            if(player.state == 1)
-            {
-                Gun gun = (Gun) InventoryManager.Instance.GetActiveItem();
-                gun.Trigger();
-            }
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(player.state == 1)
-            {
-                Gun gun = (Gun)InventoryManager.Instance.GetActiveItem();
-                gun.TriggerDown();
-            }
-            else
-            {
-                player.UseObject();
-            }
-        }
-        if (checkKeyDown(KeyCode.R))
-        {
-            if (player.state == 1)
-            {
-                Gun gun = (Gun)InventoryManager.Instance.GetActiveItem();
-                StartCoroutine(gun.Reload());
-            }
+            invManager.SelectItem(InventoryType.Gun, 0);
         }
 
         /* Interaction */
+        if (Input.GetMouseButton(0))
+        {
+            invManager.UseItem();
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            invManager.UseItemDown();
+        }
         if (checkKeyDown(KeyCode.E))
         {
             player.PickupItem();
+        }
+        if (checkKeyDown(KeyCode.R))
+        {
+            if (invManager.GetActiveItem() is Gun)
+                StartCoroutine((invManager.GetActiveItem() as Gun).Reload());
+        }
+        if (checkKeyDown(KeyCode.G))
+        {
+            invManager.DropCurrentItem();
         }
         if (checkKeyDown(KeyCode.Space))
         {
@@ -112,32 +103,6 @@ public class InputManager : MonoBehaviour
         {
             StartCoroutine(examinePanel.Close());
         }
-        /*else if (checkKeyDown(KeyCode.E))
-        {
-            InventoryManager.Instance.SelectItem(0, 1);
-        }*/
-        /*
-        if (Input.GetButtonDown("Gun1"))
-        {
-            weaponHolder.transform.GetChild(0).gameObject.SetActive(true);
-            activeGun = 0;
-            if (guns.Count > 1)
-            {
-                weaponHolder.transform.GetChild(1).gameObject.SetActive(false);
-                //ActiveItemChanged(this, new InventoryEventArgs(guns[0]));
-            }
-        }
-        else if (Input.GetButtonDown("Gun2"))
-        {
-            weaponHolder.transform.GetChild(0).gameObject.SetActive(false);
-            activeGun = 1;
-            if (guns.Count > 1)
-            {
-                weaponHolder.transform.GetChild(1).gameObject.SetActive(true);
-                //ActiveItemChanged(this, new InventoryEventArgs(guns[1]));
-            }
-        }
-        */
 
         /* Pause Menu */
         if (checkKeyDown(KeyCode.Escape))

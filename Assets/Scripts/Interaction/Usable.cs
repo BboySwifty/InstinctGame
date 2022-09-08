@@ -4,25 +4,30 @@ using UnityEngine;
 
 public abstract class Usable : Interactable
 {
-
-    public string SuccessfulInteractionMessage;
-    public string UnsuccessfulInteractionMessage;
-    public int requiredItemID;
+    [SerializeField] string SuccessfulInteractionMessage;
+    [SerializeField] string UnsuccessfulInteractionMessage;
+    [SerializeField] ItemData requiredItem;
 
     public abstract void Use();
 
+    public ItemData GetRequiredItem()
+    {
+        return requiredItem;
+    }
+
     public override void Interact()
     {
-        UIUpdate.Instance.BroadcastMessageToUser(SuccessfulInteractionMessage);
+        /*if(!IsInteractable())
+            UIManager.Instance.BroadcastMessageToUser(UnsuccessfulInteractionMessage);
+        else
+        {
+            UIManager.Instance.BroadcastMessageToUser(SuccessfulInteractionMessage);
+        }*/
         Use();
     }
 
-    public bool IsInteractable()
+    public bool IsInteractable(ItemData item)
     {
-        Item activeItem = InventoryManager.Instance.GetActiveItem();
-        bool result = (requiredItemID == -1 || (activeItem != null && activeItem.id == requiredItemID));
-        if(!result)
-            UIUpdate.Instance.BroadcastMessageToUser(UnsuccessfulInteractionMessage);
-        return result;
+        return item == requiredItem;
     }
 }

@@ -12,7 +12,6 @@ public class Spawner : MonoBehaviour
     public GameObject SpawnZombie()
     {
         GameObject zombie = Instantiate(spawnPrefab, transform);
-        zombie.GetComponent<AIDestinationSetter>().target = Globals.Instance.player.transform;
         return zombie;
     }
 

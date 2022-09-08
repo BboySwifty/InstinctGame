@@ -38,7 +38,6 @@ public class UIUpdateOld : MonoBehaviour
     void Update()
     {
         UpdateScoreLabel();
-        UpdateHealthBar();
         UpdateAmmoLabel();
     }
 
@@ -59,13 +58,6 @@ public class UIUpdateOld : MonoBehaviour
         if (extraAmmo.Equals("-1"))
             extraAmmo = "-";
         ammoLabel.text = currentAmmo + " | " + extraAmmo;
-    }
-
-    private void UpdateHealthBar()
-    {
-        float currentHealth = playerStats.GetCurrentHealth();
-        healthBarSlider.value = currentHealth;
-        healthLabel.text = currentHealth.ToString();
     }
 
     private void UpdateScoreLabel()

@@ -8,6 +8,6 @@ public class GreenChest : BreakableBox
     public void SetDropSprite(Sprite sprite)
     {
         dropPrefab.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
-        dropPrefab.GetComponent<Item>().inventoryImage = sprite;
+        dropPrefab.GetComponent<Item>().itemData.inventoryImage = sprite;
     }
 }

@@ -8,13 +8,17 @@ public class Flashlight : Item
     private Light2D _Light2D;
 
     // Start is called before the first frame update
-    public override void Start()
+    public void Start()
     {
-        base.Start();
         _Light2D = GetComponent<Light2D>();
     }
 
     public override void Use()
+    {
+        Switch();
+    }
+
+    private void Switch()
     {
         _Light2D.enabled = !_Light2D.enabled;
     }

@@ -10,7 +10,7 @@ public abstract class Interactable : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             Player player = collider.gameObject.GetComponent<Player>();
-            player.SetNearbyObject(this);
+            player.AddNearbyObject(this);
         }
     }
     void OnTriggerExit2D(Collider2D collider)
@@ -18,7 +18,7 @@ public abstract class Interactable : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             Player player = collider.gameObject.GetComponent<Player>();
-            player.SetNearbyObject(null);
+            player.RemoveNearbyObject(this);
         }
     }
 

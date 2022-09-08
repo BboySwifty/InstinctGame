@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunData : ScriptableObject
+[CreateAssetMenu(menuName = "Items/Gun")]
+public class GunData : ItemData
 {
     public float fireRate = 0.5f;
     public float firePower;

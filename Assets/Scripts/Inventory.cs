@@ -6,60 +6,25 @@ using UnityEngine;
 [Serializable]
 public class Inventory
 {
-    public int activeItem = -1;
-
-    private int inventorySize;
+    private List<Gun> guns;
     private List<Item> items;
 
-    public Inventory(int inventorySize)
+    public Inventory(int gunsSize, int itemsSize)
     {
-        this.inventorySize = inventorySize;
-
         items = new List<Item>
         {
-            Capacity = inventorySize
+            Capacity = itemsSize
+        };
+
+        guns = new List<Gun>
+        {
+            Capacity = gunsSize
         };
     }
 
-    public void AddItem(Item item)
+    public List<Gun> GetGuns()
     {
-        items.Add(item);
-    }
-
-    public void SetItem(int index, Item item)
-    {
-        items[index] = item;
-    }
-
-    public void RemoveItem(Item item)
-    {
-        items.Remove(item);
-        activeItem = -1;
-    }
-
-    public void SelectItem(int index)
-    {
-        if (index <= items.Count - 1)
-        {
-            if (activeItem != -1)
-                items[activeItem].gameObject.SetActive(false);
-            activeItem = index;
-            items[activeItem].gameObject.SetActive(true);
-        }
-    }
-
-    public void DeselectCurrentItem()
-    {
-        if (activeItem != -1)
-        {
-            items[activeItem].gameObject.SetActive(false);
-            activeItem = -1;
-        }
-    }
-
-    public void DropItem(int itemIndex)
-    {
-        items[itemIndex].Drop();
+        return guns;
     }
 
     public List<Item> GetItems()
@@ -67,33 +32,73 @@ public class Inventory
         return items;
     }
 
-    public Item GetItemAtIndex(int index)
+    public int AddItem(Item item)
+    {
+        if (!HasSpace(item))
+            return -1;
+
+        if (item is Gun)
+        {
+            guns.Add(item as Gun);
+            return guns.IndexOf(item as Gun);
+        }
+        else
+        {
+            items.Add(item);
+            return items.IndexOf(item);
+        }
+    }
+
+    public bool HasSpace(Item item)
+    {
+        return item is Gun ? guns.Count <= guns.Capacity : items.Count <= items.Capacity;
+    }
+
+    public void SetItemAtIndex(Item item, int index)
+    {
+        if (item is Gun)
+            guns[index] = item as Gun;
+        else
+            items[index] = item;
+    }
+
+    public void RemoveItem(Item item)
+    {
+        if (item is Gun)
+            guns.Remove(item as Gun);
+        else
+            items.Remove(item);
+    }
+
+    public int GetIndexOf(Item item)
+    {
+        return item is Gun ? guns.IndexOf(item as Gun) : items.IndexOf(item);
+    }
+
+    public Item GetItemAtIndex(InventoryType invType, int index)
     {
         Item item = null;
-        if (index <= items.Count - 1)
-        {
+        if (invType == InventoryType.Item && index < items.Count)
             item = items[index];
-        }
+        else if (invType == InventoryType.Gun && index < guns.Count)
+            item = guns[index];
         return item;
-    }
-
-    public Item GetActiveItem()
-    {
-        Item item = null;
-        if (activeItem != -1)
-        {
-            item = items[activeItem];
-        }
-        return item;
-    }
-
-    public bool IsFull()
-    {
-        return items.Count >= inventorySize;
     }
 
     public int GetItemCount()
     {
         return items.Count;
     }
+
+    public int GetGunCount()
+    {
+        return guns.Count;
+    }
+}
+
+public enum InventoryType
+{
+    None,
+    Item,
+    Gun
 }

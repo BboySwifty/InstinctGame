@@ -19,9 +19,9 @@ public class WaveManager : MonoBehaviour
     public bool waveOnCooldown = true;
     public int waveNumber = 0;
 
-    private Player player;
     private float spawnTimer = 0f;
     private int zombiesToSpawn = 5;
+    private GameObject player;
 
     #region Singleton
     private void CreateInstance()
@@ -40,11 +40,7 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         CreateInstance();
-    }
-
-    private void Start()
-    {
-        player = Globals.Instance.player;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -84,6 +80,7 @@ public class WaveManager : MonoBehaviour
     {
         GameObject zombie = spawnPoint.SpawnZombie();
         zombie.transform.SetParent(ZombiesContainer.transform);
+        zombie.GetComponent<AIDestinationSetter>().target = player.transform;
         zombiesToSpawn--;
 
         if (debug)

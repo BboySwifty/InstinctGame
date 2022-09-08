@@ -7,7 +7,6 @@ public class Globals : MonoBehaviour
     public static Globals Instance { get; private set; }
 
     public Transform pickupParent;
-    public Player player;
 
     #region Singleton
     private void CreateInstance()
@@ -25,6 +24,5 @@ public class Globals : MonoBehaviour
     private void Awake()
     {
         CreateInstance();
-        player = FindObjectOfType<Player>();
     }
 }

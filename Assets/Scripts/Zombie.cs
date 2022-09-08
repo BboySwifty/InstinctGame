@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Zombie : Actor
 {
-
     public float damage = 10;
 
     void OnCollisionEnter2D(Collision2D collider)
