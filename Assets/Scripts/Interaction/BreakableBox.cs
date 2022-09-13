@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableBox : Usable
+public class BreakableBox : InteractableObject
 {
     public Sprite brokenImage;
-    public GameObject dropPrefab;
+    public GameObject itemPrefab;
+    public ItemData itemDrop;
     public SpriteRenderer spriteRenderer;
     public bool disableCollider = false;
 
@@ -31,6 +32,7 @@ public class BreakableBox : Usable
                 c.enabled = false;
         }
 
-        Instantiate(dropPrefab, transform.position, Quaternion.identity, Globals.Instance.pickupParent);
+        itemPrefab.GetComponent<Item>().itemData = itemDrop;
+        Instantiate(itemPrefab, transform.position, Quaternion.identity, Globals.Instance.pickupParent);
     }
 }

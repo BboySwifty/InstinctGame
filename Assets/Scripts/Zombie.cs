@@ -13,7 +13,6 @@ public class Zombie : Actor
             Player player = collider.gameObject.GetComponent<Player>();
             player.Knockback(player.transform.position - transform.position);
             player.Damage(damage);
-
         }
     }
 }

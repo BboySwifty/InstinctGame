@@ -8,5 +8,6 @@ public class ItemData : ScriptableObject
     public int id;
     public string itemName;
     public string description;
+    public Sprite holdingImage;
     public Sprite inventoryImage;
 }

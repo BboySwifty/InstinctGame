@@ -25,7 +25,6 @@ public class InventorySlot : MonoBehaviour
         {
             ClearItem();
         }
-
     }
 
     public void ClearItem()

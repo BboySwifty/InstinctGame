@@ -11,7 +11,7 @@ public class Puzzle_ColorLock : Puzzle
     public const string ITEM_SPRITE_FOLDER = "Item";
     public const string POSTER_SPRITE_FOLDER = "Poster";
 
-    public GreenChest greenChest;
+    public ItemData itemData;
 
     protected override void GenerateRandomHint()
     {
@@ -25,7 +25,9 @@ public class Puzzle_ColorLock : Puzzle
         code += poster.name.Substring(poster.name.IndexOf('_') + 1);
         code += item.name.Substring(item.name.IndexOf('_') + 1);
 
-        greenChest.SetDropSprite(item);
+        itemData.holdingImage = item;
+        itemData.inventoryImage = item;
+
         hints[0].SetSprite(poster);
         hints[0].SetExamineImage(poster);
     }

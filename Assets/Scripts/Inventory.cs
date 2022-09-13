@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class Inventory
@@ -51,7 +49,7 @@ public class Inventory
 
     public bool HasSpace(Item item)
     {
-        return item is Gun ? guns.Count <= guns.Capacity : items.Count <= items.Capacity;
+        return item is Gun ? guns.Count < guns.Capacity : items.Count < items.Capacity;
     }
 
     public void SetItemAtIndex(Item item, int index)

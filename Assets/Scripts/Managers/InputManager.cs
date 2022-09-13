@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ public class InputManager : MonoBehaviour
     public Animator inventoryAnimator;
     public Animator gunsAnimator;
     public ExaminePanel examinePanel;
+
+    public event EventHandler<EventArgs> OnPickup;
+    public event EventHandler<EventArgs> OnMouse;
+    public event EventHandler<EventArgs> OnMouseDown;
 
     public static InputManager Instance { get; private set; }
 
@@ -76,15 +81,15 @@ public class InputManager : MonoBehaviour
         /* Interaction */
         if (Input.GetMouseButton(0))
         {
-            invManager.UseItem();
+            OnMouse?.Invoke(this, EventArgs.Empty);
         }
         if (Input.GetMouseButtonDown(0))
         {
-            invManager.UseItemDown();
+            OnMouseDown?.Invoke(this, EventArgs.Empty);
         }
         if (checkKeyDown(KeyCode.E))
         {
-            player.PickupItem();
+            OnPickup?.Invoke(this, EventArgs.Empty);
         }
         if (checkKeyDown(KeyCode.R))
         {

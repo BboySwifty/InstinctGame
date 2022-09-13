@@ -36,6 +36,12 @@ public class InventoryManager : MonoBehaviour
         inventory = new Inventory(2, 6);
     }
 
+    private void Start()
+    {
+        InputManager.Instance.OnMouse += UseItem;
+        InputManager.Instance.OnMouseDown += UseItemDown;
+    }
+
     public Item GetActiveItem()
     {
         return activeItem;
@@ -44,6 +50,14 @@ public class InventoryManager : MonoBehaviour
     public Inventory GetInventory()
     {
         return inventory;
+    }
+
+    public void ConsumeCurrentItem()
+    {
+        inventory.RemoveItem(activeItem);
+        if (activeItem is IConsumable)
+            (activeItem as IConsumable).Consume();
+        InvokeItemsChanged();
     }
 
     public void DropCurrentItem()
@@ -76,25 +90,26 @@ public class InventoryManager : MonoBehaviour
         else // item was not added AND wielding something
         {
             int activeItemIndex = inventory.GetIndexOf(activeItem);
-            DropCurrentItem();
-            inventory.SetItemAtIndex(item, activeItemIndex);
-            SelectItem(activeInvType, activeItemIndex);
+            ReplaceItem(item, activeItemIndex);
+            SelectItem(invType, activeItemIndex);
         }
         AddItemToItemHolder(item);
+
+        UIManager.Instance.BroadcastMessageToUser("Picked up " + item.itemData.itemName);
 
         InvokeItemsChanged();
     }
 
-    public void UseItem()
+    public void UseItem(object state, EventArgs e)
     {
-        if(activeItem != null)
-            activeItem.Use();
+        if(activeItem is IUsable)
+           (activeItem as IUsable).Use();
     }
 
-    public void UseItemDown()
+    public void UseItemDown(object state, EventArgs e)
     {
-        if (activeItem != null)
-            activeItem.UseDown();
+        if (activeItem is IUsable)
+            (activeItem as IUsable).UseDown();
     }
 
     public void SelectItem(InventoryType invType, int index)
@@ -109,6 +124,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+            activeInvType = invType;
             item.gameObject.SetActive(true);
             activeItem = item;
         }
@@ -121,7 +137,6 @@ public class InventoryManager : MonoBehaviour
         item.transform.SetParent(PlayerItems);
         item.transform.localPosition = new Vector3(0, 0, 0);
         item.transform.localRotation = Quaternion.identity;
-        item.GetComponent<Collider2D>().enabled = false;
     }
 
     private void DeselectCurrentItem()
@@ -131,6 +146,16 @@ public class InventoryManager : MonoBehaviour
 
         activeItem.gameObject.SetActive(false);
         activeItem = null;
+    }
+
+    private void ReplaceItem(Item item, int itemIndex)
+    {
+        inventory.SetItemAtIndex(item, itemIndex);
+        activeItem.transform.SetParent(EnvironmentItems);
+        activeItem.GetComponent<Collider2D>().enabled = true;
+        activeItem = null;
+        activeInvType = InventoryType.None;
+        InvokeItemsChanged();
     }
 
     private void InvokeItemsChanged()

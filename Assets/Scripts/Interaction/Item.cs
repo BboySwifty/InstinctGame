@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : Interactable, IUsable
+[ExecuteInEditMode]
+public abstract class Item : MonoBehaviour, IPickupable
 {
     public ItemData itemData;
 
-    public override void Interact()
+    public virtual void Start()
     {
-        UIManager.Instance.BroadcastMessageToUser("Picked up " + itemData.itemName);
+        GetComponent<SpriteRenderer>().sprite = itemData.holdingImage;
+    }
+
+    public void Pickup()
+    {
         InventoryManager.Instance.PickupItem(this);
-    }
-
-    public virtual void Use()
-    {
-        Interactable nearbyObject = Player.Instance.GetNearbyObject();
-        if (nearbyObject is Usable && (nearbyObject as Usable).IsInteractable(itemData))
-        {
-            (nearbyObject as Usable).Interact();
-            InventoryManager.Instance.DropCurrentItem();
-            Destroy(gameObject);
-        }
-    }
-
-    public virtual void UseDown()
-    {
     }
 }

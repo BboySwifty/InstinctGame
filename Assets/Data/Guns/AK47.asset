@@ -15,9 +15,10 @@ MonoBehaviour:
   id: 6969
   itemName: AK47
   description: OP gun
-  inventoryImage: {fileID: 21300000, guid: f293602558750a24680ba523fe671b86, type: 3}
+  holdingImage: {fileID: 21300000, guid: 1d4b2761c36efdc408be506c566bedeb, type: 3}
+  inventoryImage: {fileID: 21300000, guid: ebd490034fb2eb44ab43c1c995a128c2, type: 3}
   fireRate: 0.1
-  firePower: 0.1
+  firePower: 1
   reloadTime: 2
   maxAmmo: 240
   ammoPerClip: 24

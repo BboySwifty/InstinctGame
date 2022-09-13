@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Usable
+public class Door : InteractableObject
 {
     public override void Use()
     {

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 420
   itemName: Pistol
   description: This is a default pistol
+  holdingImage: {fileID: 21300000, guid: b9793b4e30898cb4a90705c7307ad065, type: 3}
   inventoryImage: {fileID: 21300000, guid: f1af4f7eaff82934bbf444bcf5a6db95, type: 3}
   fireRate: 0.1
   firePower: 1

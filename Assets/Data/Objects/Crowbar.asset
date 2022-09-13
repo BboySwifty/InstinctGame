@@ -15,4 +15,5 @@ MonoBehaviour:
   id: 123
   itemName: Crowbar
   description: This could break a box
-  inventoryImage: {fileID: 21300000, guid: f1120e6cc9b556b4fbd5bd594f44f927, type: 3}
+  holdingImage: {fileID: 21300000, guid: 4df99f9869a89b24a8cd8a8d21047d8a, type: 3}
+  inventoryImage: {fileID: 21300000, guid: 4df99f9869a89b24a8cd8a8d21047d8a, type: 3}

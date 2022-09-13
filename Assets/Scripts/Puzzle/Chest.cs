@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Chest : PuzzleContainer
 {
-    public GameObject drop;
+    public GameObject dropPrefab;
+    public ItemData dropData;
     public Transform dropTransform;
     public Sprite openedSprite;
     public SpriteRenderer spriteRenderer;
@@ -18,7 +19,8 @@ public class Chest : PuzzleContainer
     public override void Open(object sender, EventArgs e)
     {
         spriteRenderer.sprite = openedSprite;
-        Instantiate(drop, dropTransform.position, Quaternion.identity, Globals.Instance.pickupParent);
+        dropPrefab.GetComponent<Item>().itemData = dropData;
+        Instantiate(dropPrefab, dropTransform.position, Quaternion.identity, Globals.Instance.pickupParent);
         panel.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
         enabled = false;

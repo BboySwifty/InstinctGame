@@ -33,6 +33,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         for (int i = 0; i < popUps.Length; i++)
         {
             if (i == tutorialStage)
@@ -40,7 +41,6 @@ public class TutorialManager : MonoBehaviour
             else
                 popUps[i].SetActive(false);
         }
-
         switch (tutorialStage)
         {
             case 0:
@@ -68,7 +68,7 @@ public class TutorialManager : MonoBehaviour
             case 3:
                 if (player.GetNearbyObject() is BreakableBox box &&
                     Input.GetMouseButtonDown(0) &&
-                    InventoryManager.Instance.GetActiveItem().itemData == box.GetRequiredItem())
+                    InventoryManager.Instance.GetActiveItem().itemData == box.requiredItem)
                     tutorialStage++;
                 break;
             case 4:
@@ -82,12 +82,12 @@ public class TutorialManager : MonoBehaviour
             case 6:
                 if (player.GetNearbyObject() is Door door &&
                     Input.GetMouseButtonDown(0) &&
-                    InventoryManager.Instance.GetActiveItem().itemData == door.GetRequiredItem())
+                    InventoryManager.Instance.GetActiveItem().itemData == door.requiredItem)
                 {
                     tutorialStage++;
                 }
                 break;
-        }
+        }*/
     }
 
     private void ChestExited(object state, EventArgs e)
@@ -103,15 +103,18 @@ public class TutorialManager : MonoBehaviour
     private void TutorialTriggerEntered(object state, EventArgs e)
     {
         TutorialTimelineTrigger ttt = state as TutorialTimelineTrigger;
-        Console.WriteLine("Hi bitch - " + ttt.id);
         switch (tutorialStage)
         {
-            case 7:
+            case 0:
                 timeline1.Play();
-                spawner.SpawnZombie();
+                WaveManager.Instance.SpawnZombie(spawner);
+                for (int i = 0; i < popUps.Length; i++)
+                {
+                    popUps[i].SetActive(false);
+                }
                 tutorialStage++;
                 break;
-            case 8:
+            case 1:
                 if(_inventory.GetGunCount() > 0)
                 {
                     timeline1.Stop();
@@ -120,7 +123,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialStage++;
                 }
                 break;
-            case 9:
+            case 2:
                 if(ttt.id == 2)
                 {
                     GameManager.Instance.SetGameState(GameState.Waves);

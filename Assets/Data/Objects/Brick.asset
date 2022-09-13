@@ -15,4 +15,5 @@ MonoBehaviour:
   id: 125
   itemName: Brick
   description: I don't know what this is for
+  holdingImage: {fileID: 21300000, guid: bfb0f784c928dc54aab7fdad6cf6e86f, type: 3}
   inventoryImage: {fileID: 21300000, guid: bfb0f784c928dc54aab7fdad6cf6e86f, type: 3}

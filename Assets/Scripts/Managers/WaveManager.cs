@@ -76,7 +76,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private void SpawnZombie(Spawner spawnPoint)
+    public void SpawnZombie(Spawner spawnPoint)
     {
         GameObject zombie = spawnPoint.SpawnZombie();
         zombie.transform.SetParent(ZombiesContainer.transform);
