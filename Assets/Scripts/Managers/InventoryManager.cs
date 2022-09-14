@@ -118,7 +118,17 @@ public class InventoryManager : MonoBehaviour
         bool isSameItem = activeItem == item;
         DeselectCurrentItem();
 
-        if (isSameItem || item == null)
+        if(isSameItem && invType == InventoryType.Gun)
+        {
+            List<Gun> guns = inventory.GetGuns();
+            Gun placeholder = guns[0];
+            guns[0] = guns[1];
+            guns[1] = placeholder;
+            item.gameObject.SetActive(false);
+            guns[0].gameObject.SetActive(true);
+            activeItem = guns[0];
+        }
+        else if (isSameItem || item == null)
         {
             activeInvType = InventoryType.None;
         }
@@ -160,16 +170,16 @@ public class InventoryManager : MonoBehaviour
 
     private void InvokeItemsChanged()
     {
-        ItemsChanged?.Invoke(this, new ItemsChangedEventArgs(activeItem is Gun));
+        ItemsChanged?.Invoke(this, new ItemsChangedEventArgs(activeItem));
     }
 }
 
 public class ItemsChangedEventArgs : EventArgs
 {
-    public bool GunIsEquipped { get; }
+    public Item NewItem { get; }
 
-    public ItemsChangedEventArgs(bool gunIsEquipped)
+    public ItemsChangedEventArgs(Item newItem)
     {
-        GunIsEquipped = gunIsEquipped;
+        NewItem = newItem;
     }
 }

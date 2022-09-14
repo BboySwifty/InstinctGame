@@ -51,8 +51,8 @@ public class UIUpdateOld : MonoBehaviour
 
     private void UpdateAmmoLabel()
     {
-        string currentAmmo = activeGun.CurrentClipAmmo().ToString();
-        string extraAmmo = activeGun.CurrentExtraAmmo().ToString();
+        string currentAmmo = activeGun.CurrentClipAmmo.ToString();
+        string extraAmmo = activeGun.CurrentExtraAmmo.ToString();
         if (currentAmmo.Equals("-1"))
             currentAmmo = "-";
         if (extraAmmo.Equals("-1"))

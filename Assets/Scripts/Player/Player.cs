@@ -73,6 +73,11 @@ public class Player : Actor
         }
     }
 
+    public override void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void AddScore(float score)
     {
         this.score += score;

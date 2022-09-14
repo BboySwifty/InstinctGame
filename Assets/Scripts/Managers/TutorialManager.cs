@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
     public TutorialChest chest;
     public List<TutorialTimelineTrigger> triggers;
     public PlayableDirector timeline1;
+    public PlayableDirector timeline2;
     public Spawner spawner;
     public GameObject zombieDoor;
 
@@ -118,7 +119,7 @@ public class TutorialManager : MonoBehaviour
                 if(_inventory.GetGunCount() > 0)
                 {
                     timeline1.Stop();
-                    timeline1.Play();
+                    timeline2.Play();
                     Destroy(zombieDoor, 1f);
                     tutorialStage++;
                 }
@@ -126,6 +127,7 @@ public class TutorialManager : MonoBehaviour
             case 2:
                 if(ttt.id == 2)
                 {
+                    timeline2.Stop();
                     GameManager.Instance.SetGameState(GameState.Waves);
                     tutorialStage++;
                 }

@@ -223,7 +223,7 @@ MonoBehaviour:
   KnockbackTime: 0.5
   playerDamaged: {fileID: 0}
   deathSound: {fileID: 6706830219610504839}
-  damage: 1
+  damage: 10
 --- !u!82 &6706830219610504839
 AudioSource:
   m_ObjectHideFlags: 0

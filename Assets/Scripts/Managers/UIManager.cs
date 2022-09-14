@@ -125,14 +125,24 @@ public class UIManager : MonoBehaviour
 
     private void EnableAmmoPanel(object sender, ItemsChangedEventArgs e)
     {
-        ammoText.enabled = e.GunIsEquipped;
-        if (e.GunIsEquipped)
-            (im.GetActiveItem() as Gun).AmmoChanged += UpdateAmmoText;
+        bool enabled = e.NewItem is Gun;
+        ammoText.enabled = e.NewItem is Gun;
+        if (enabled)
+        {
+            Gun gun = e.NewItem as Gun;
+            gun.AmmoChanged += UpdateAmmoText;
+            SetAmmoText(gun.CurrentClipAmmo, gun.CurrentExtraAmmo);
+        }
     }
 
     private void UpdateAmmoText(object sender, AmmoChangedEventArgs e)
     {
-        ammoText.text = $"{e.CurrentAmmo} | {e.ExtraAmmo}";
+        SetAmmoText(e.CurrentAmmo, e.ExtraAmmo);
+    }
+
+    private void SetAmmoText(int currentAmmo, int extraAmmo)
+    {
+        ammoText.text = $"{currentAmmo} | {extraAmmo}";
     }
 
     private void UpdateHealthSlider(object sender, HealthChangedEventArgs e)

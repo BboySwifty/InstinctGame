@@ -21,6 +21,9 @@ public class Gun : Item, IUsable
     private bool isReloading;
     private const float BULLET_LINE_LIFETIME = 0.02f; // Recommended 0.02f
 
+    public int CurrentClipAmmo => currentAmmoInClip;
+    public int CurrentExtraAmmo => currentExtraAmmo;
+
     private void Awake()
     {
         _gunData = itemData as GunData;
@@ -173,16 +176,6 @@ public class Gun : Item, IUsable
     private void InvokeAmmoChanged()
     {
         AmmoChanged?.Invoke(this, new AmmoChangedEventArgs(currentAmmoInClip, currentExtraAmmo));
-    }
-
-    public int CurrentClipAmmo()
-    {
-        return currentAmmoInClip;
-    }
-
-    public int CurrentExtraAmmo()
-    {
-        return currentExtraAmmo;
     }
 }
 
